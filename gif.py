@@ -17,7 +17,7 @@ frames = [Image.open(imagem) for imagem in imagens]
 if frames:
     # Salva o GIF com uma taxa de atualização de 500 ms por frame
     frames[0].save(
-        "meu_gif.gif",
+        "reta_de_regressao.gif",
         save_all=True,
         append_images=frames[1:],  # Adiciona o restante das imagens
         duration=500,              # Duração de cada frame em milissegundos

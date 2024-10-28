@@ -25,7 +25,7 @@ def regressao_ols(x, y):
     return w0, w1, mse, y_pred
 
 
-# Função para Regressão Linear com Gradiente Descendente
+# Função para Regressão Linear com Gradiente Descendente (salvando imagens a cada 10 épocas)
 def gradiente_descendente(x, y):
     w0 = 0  # Inicialização do parâmetro w0
     w1 = 0  # Inicialização do parâmetro w1
@@ -33,6 +33,11 @@ def gradiente_descendente(x, y):
     epochs = 1000  # Número máximo de épocas fixo
     tol = 1e-3  # Tolerância fixa
     mse_values = []
+
+    # Diretório para salvar as imagens do gradiente descendente
+    gif_dir = os.path.join(output_dir, 'imagens_gif')
+    if not os.path.exists(gif_dir):
+        os.makedirs(gif_dir)
 
     for t in range(epochs):
         y_pred = w0 + w1 * x
@@ -43,12 +48,24 @@ def gradiente_descendente(x, y):
         mse = calcular_mse(y, y_pred)
         mse_values.append(mse)
 
+        # Salvar a primeira época, a cada 10 épocas, e a última época
+        if t == 0 or t % 10 == 0 or t == epochs - 1:
+            plt.figure()
+            plt.scatter(x, y, color='blue', label='Dados')
+            plt.plot(x, y_pred, color='red', linestyle='--', label=f'Época {t}')
+            plt.xlabel('x')
+            plt.ylabel('y')
+            plt.legend()
+            plt.title(f'Gradiente Descendente - Época {t}, MSE: {mse:.5f}')
+            plt.savefig(os.path.join(gif_dir, f'gradiente_descendente_epoca_{str(t).zfill(3)}.png'))
+            plt.close()
+
+        # Critério de convergência
         if t > 0 and abs(mse_values[-2] - mse_values[-1]) < tol:
             print(f'Convergência atingida na época {t}.')
             break
 
     return w0, w1, mse_values, y_pred
-
 
 # Exibição dos resultados da Regressão Linear via OLS
 w0_ols, w1_ols, mse_ols, y_pred_ols = regressao_ols(x, y)
