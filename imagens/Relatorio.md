@@ -30,10 +30,10 @@ Na regressão via OLS, o objetivo é encontrar os parâmetros que minimizam o **
 w = (X^T X)^{-1} X^T y
 \]
 
-onde \(X\) é a matriz de características com uma coluna de `1's` (para o intercepto \( w_0 \)) e a coluna de `x` (para o coeficiente \( w_1 \)).
+onde $X$ é a matriz de características com uma coluna de `1's` (para o intercepto $w_0$) e a coluna de `x` (para o coeficiente $w_1$).
 
-- **Parâmetro \( w_0 \) (intercepto):** 0.0676
-- **Parâmetro \( w_1 \) (coeficiente):** 1.5749
+- **Parâmetro $w_0$ (intercepto):** 0.0676
+- **Parâmetro $w_1$ (coeficiente):** 1.5749
 - **Erro Quadrático Médio (MSE):** 0.2134
 
 Esses parâmetros indicam que o modelo consegue capturar bem a tendência linear do conjunto de dados.
@@ -46,14 +46,14 @@ Abaixo, o gráfico de dispersão com a reta de ajuste calculada pelo método OLS
 
 #### 2. Regressão Linear com Gradiente Descendente (GD)
 
-Para a regressão com Gradiente Descendente, o modelo é ajustado iterativamente através de uma taxa de aprendizado (\(\alpha = 0.01\)) e um número máximo de `1000` épocas. Em cada época, os parâmetros \( w_0 \) e \( w_1 \) são atualizados para minimizar o MSE com base na derivada dos erros. O critério de parada ocorre quando a variação do MSE entre épocas consecutivas é menor que uma tolerância (\( \text{tol} = 0.001 \)).
+Para a regressão com Gradiente Descendente, o modelo é ajustado iterativamente através de uma taxa de aprendizado ($\alpha = 0.01$) e um número máximo de `1000` épocas. Em cada época, os parâmetros $w_0$ e $w_1$ são atualizados para minimizar o MSE com base na derivada dos erros. O critério de parada ocorre quando a variação do MSE entre épocas consecutivas é menor que uma tolerância ($\text{tol} = 0.001$).
 
 Durante a execução, foram geradas imagens da reta ajustada a cada 10 épocas para demonstrar a convergência visual do modelo.
 
 ##### Parâmetros finais
 
-- **Parâmetro \( w_0 \) (intercepto) final:** 0.0627
-- **Parâmetro \( w_1 \) (coeficiente) final:** 0.9523
+- **Parâmetro $w_0$ (intercepto) final:** 0.0627
+- **Parâmetro $w_1$ (coeficiente) final:** 0.9523
 - **Último Erro Quadrático Médio (MSE):** 0.3525
 - **Convergência atingida na época:** 259
 
